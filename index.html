@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Triangle Fish Guy – Aquarium Maintenance in Raleigh, Durham, Chapel Hill</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Triangle Fish Guy provides custom aquarium design and maintenance in the Raleigh–Durham–Chapel Hill area. Freshwater and saltwater, from nano tanks to 400+ gallon systems.">
+
+  <!-- Optional: Google font, safe to remove if you want pure system font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050b12;
+      --bg-alt: #081521;
+      --accent: #2fa6d9;
+      --accent-soft: rgba(47, 166, 217, 0.1);
+      --text: #f5f7fa;
+      --muted: #a6b4c4;
+      --card: #101f2c;
+      --radius: 14px;
+      --max-width: 980px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Lato, sans-serif;
+      background: radial-gradient(circle at top, #152f49 0, #050b12 55%, #020309 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Header / nav --- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(3, 10, 18, 0.95), rgba(3, 10, 18, 0.7));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.98rem;
+    }
+
+    .brand span.fish {
+      font-size: 1.4rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      nav ul {
+        display: none; /* keep mobile simple: no nav links */
+      }
+
+      .nav-inner {
+        justify-content: center;
+      }
+    }
+
+    /* --- Hero section with big background image --- */
+
+    .hero {
+      position: relative;
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      color: var(--text);
+      padding: 4.5rem 1.5rem 3rem;
+      background-image:
+        linear-gradient(120deg, rgba(2, 9, 18, 0.9), rgba(2, 9, 18, 0.4)),
+        url("hero.png"); /* <-- change to your big hero image */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.3rem, 3.4vw + 1rem, 3.4rem);
+      margin: 0 0 0.8rem;
+    }
+
+    .hero-text h1 span.accent {
+      color: var(--accent);
+    }
+
+    .hero-text p.lead {
+      margin: 0.5rem 0 1.2rem;
+      font-size: 1.03rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.83rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.3rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.55rem 1.15rem;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #02070c;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      text-decoration: none;
+    }
+
+    .btn-ghost {
+      background: rgba(5, 15, 26, 0.7);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.06);
+      text-decoration: none;
+    }
+
+    .hero-side {
+      justify-self: flex-end;
+      text-align: left;
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 20rem;
+      background: rgba(2, 9, 18, 0.6);
+      border-radius: 18px;
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-side strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        justify-self: flex-start;
+        margin-top: 1rem;
+      }
+    }
+
+    /* --- Main content --- */
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.2fr);
+      gap: 2rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .card + .card {
+      margin-top: 1rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .list-clean {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.6rem 0 0;
+    }
+
+    .list-clean li {
+      padding: 0.16rem 0;
+    }
+
+    .quote {
+      margin: 0.4rem 0;
+      padding-left: 0.8rem;
+      border-left: 3px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-block p {
+      margin: 0.35rem 0;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-chip {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .social-chip span {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- Footer --- */
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1.5rem 1.25rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #020409;
+    }
+
+    footer p {
+      margin: 0.25rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">
+      <span class="fish">🐠</span>
+      <span>Triangle Fish Guy</span>
+    </div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#area">Service Area</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        Since 2009 • Raleigh–Durham–Chapel Hill
+      </div>
+      <h1>
+        Professional aquarium care<br>
+        <span class="accent">for people who love fish, not maintenance.</span>
+      </h1>
+      <p class="lead">
+        Triangle Fish Guy (The Fish Guy LLC) designs, installs, and maintains
+        custom aquariums for homes and businesses across the Triangle. From
+        10-gallon freshwater tanks to 400+ gallon reefs, we keep your system
+        clean, healthy, and beautiful.
+      </p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#contact">Request a free on-site estimate</a>
+        <a class="btn-ghost" href="#services">See what we do</a>
+      </div>
+    </div>
+
+    <div class="hero-side">
+      <strong>Custom aquariums & full-service maintenance</strong>
+      Serving Raleigh, Durham, Chapel Hill and surrounding areas with
+      dedicated Fish Guys and Fish Girls who are a little too invested
+      in your tank staying gorgeous.
+    </div>
+  </div>
+</section>
+
+<main>
+  <div>
+    <section id="about">
+      <div class="card">
+        <h2>Who we are</h2>
+        <p class="muted">
+          The Fish Guy LLC is a small, focused aquarium maintenance company
+          that has been serving the Triangle since 2009. We currently service
+          over a dozen tanks in the area, ranging in size from 10 gallons to
+          400+ gallons.
+        </p>
+        <p class="muted">
+          Each tank has its own dedicated Fish Guy or Fish Girl who is
+          (safely) obsessed with the well-being and appearance of your
+          aquarium. Our network of local and global suppliers lets us offer
+          competitive prices and reliable access to high-quality equipment,
+          livestock, and supplements.
+        </p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="card">
+        <h2>What we do</h2>
+        <p class="muted">
+          Whether you need full-service care or occasional help, we scale our
+          services to what your tank and schedule need.
+        </p>
+        <ul class="list-clean muted">
+          <li>• Regular water changes and glass cleaning</li>
+          <li>• Filter and equipment maintenance, troubleshooting, and upgrades</li>
+          <li>• Water testing and parameter adjustments</li>
+          <li>• Algae control and aesthetic cleanup</li>
+          <li>• Livestock sourcing and stocking plans</li>
+          <li>• New tank planning, setup, and cycling</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>New tanks & existing setups</h2>
+        <p class="muted">
+          <strong>Just getting started?</strong> We’ll help you choose the
+          right size, shape, and equipment for your space and goals, then
+          handle the messy parts of setup and early maintenance.
+        </p>
+        <p class="muted">
+          <strong>Already have a tank you love?</strong> We can take over
+          routine maintenance, tune your system for stability, or step in
+          when things get out of hand and you need a reset.
+        </p>
+      </div>
+    </section>
+
+    <section aria-label="Client reviews">
+      <div class="card">
+        <h2>What our clients say</h2>
+        <p class="quote">
+          “Great people to work with. Glad I was able to finally find a
+          solution for my sunroom!”
+        </p>
+        <p class="quote">
+          “Eric has been nothing but professional… he’s been extremely patient
+          and made sure we get exactly what we want.”
+        </p>
+        <p class="quote">
+          “They were punctual, friendly, professional, and very qualified. I
+          really can’t say enough good things about this service.”
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <aside id="contact" aria-label="Contact and service area">
+    <div class="card contact-block">
+      <h2>Contact</h2>
+      <p class="muted">
+        Love aquariums but not the maintenance? Get in touch for a
+        <strong>free on-site estimate</strong> from one of our technicians.
+      </p>
+      <p>
+        Email:<br>
+        <a href="mailto:EricNelson@TriangleFishGuy.com">
+          EricNelson@TriangleFishGuy.com
+        </a>
+      </p>
+      <p>
+        Phone:<br>
+        <a href="tel:+19196337436">(919) 633-7436</a>
+      </p>
+      <p class="muted" style="font-size:0.85rem;">
+        Please include your location, tank size, and a brief description of
+        your setup so we can respond with a rough estimate.
+      </p>
+    </div>
+
+    <div class="card" id="area">
+      <h2>Service area</h2>
+      <p class="muted">
+        We provide in-person aquarium service in:
+      </p>
+      <ul class="list-clean muted">
+        <li>• Raleigh</li>
+        <li>• Durham</li>
+        <li>• Chapel Hill</li>
+        <li>• Cary & surrounding Triangle communities</li>
+      </ul>
+      <p class="muted" style="margin-top:0.6rem; font-size:0.85rem;">
+        Not sure if you’re in range? Email us with your ZIP code and we’ll
+        let you know.
+      </p>
+      <p class="muted" style="margin-top:0.6rem; font-size:0.85rem;">
+        #1-rated aquarium maintenance company on Angie’s List, and featured
+        in Chapel Hill Magazine and Durham Magazine.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Find us online</h2>
+      <p class="muted">
+        Follow along for tank photos, projects, and the occasional weird
+        build.
+      </p>
+      <div class="social-row">
+        <a class="social-chip" href="https://twitter.com/TriangleFishGuy" target="_blank" rel="noopener">
+          <span>🐦</span> Twitter
+        </a>
+        <a class="social-chip" href="http://trianglefishguy-blog.tumblr.com" target="_blank" rel="noopener">
+          <span>📝</span> Blog / Tumblr
+        </a>
+        <a class="social-chip" href="https://www.facebook.com/triangle.fishguy" target="_blank" rel="noopener">
+          <span>📘</span> Facebook
+        </a>
+        <a class="social-chip" href="https://www.instagram.com/trianglefishguy/" target="_blank" rel="noopener">
+          <span>📷</span> Instagram
+        </a>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  <p>Triangle Fish Guy &middot; The Fish Guy LLC &middot; 2010–<span id="year"></span></p>
+</footer>
+
+<script>
+  // keep the year current without needing PHP
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
